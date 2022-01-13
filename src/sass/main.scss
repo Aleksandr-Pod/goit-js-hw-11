@@ -1,0 +1,24 @@
+/*
+ * Главный файл стилей.
+ * Все паршалы подключаются сюда.
+ */
+
+// Стили для файла с примером HTML-фрагмента
+// @import './example';
+
+// паршалов не будет, всё будет тут
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgb(47, 43, 116);
+}
+input {
+  font-size: 20px;
+  background-color: aquamarine;
+}
+button {
+  font-size: 16px;
+  background-color: rgb(140, 140, 206);
+}

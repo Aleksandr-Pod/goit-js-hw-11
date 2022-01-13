@@ -1,0 +1,23 @@
+@charset "UTF-8";
+/*
+ * Главный файл стилей.
+ * Все паршалы подключаются сюда.
+ */
+.search-form {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #2f2b74;
+}
+
+input {
+  font-size: 20px;
+  background-color: aquamarine;
+}
+
+button {
+  font-size: 16px;
+  background-color: #8c8cce;
+}
+
+/*# sourceMappingURL=/src.e31bb0bc.css.map */
