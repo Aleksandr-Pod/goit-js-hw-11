@@ -7,18 +7,23 @@
 // @import './example';
 
 // паршалов не будет, всё будет тут
-
+body {
+  background-color: darkgoldenrod;
+}
 .search-form {
   display: flex;
   justify-content: center;
   padding: 20px;
-  background-color: rgb(47, 43, 116);
+  background-color: rgb(69, 68, 97);
 }
 input {
-  font-size: 20px;
+  font-size: 16px;
   background-color: aquamarine;
 }
 button {
   font-size: 16px;
   background-color: rgb(140, 140, 206);
+}
+image {
+  margin: 0 auto;
 }
