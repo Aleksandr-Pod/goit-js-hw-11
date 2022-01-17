@@ -2066,7 +2066,7 @@ function render({
 
 function markup(hits) {
   const markup = hits.map(hit => {
-    return `<li><a href=${hit.largeImageURL} class="photo-card"><img src=${hit.webformatURL} width="320" alt=${hit.tags} loading="lazy"/></a>
+    return `<div class="photo-card"><a href=${hit.largeImageURL}><img src=${hit.webformatURL} width="320" alt=${hit.tags} loading="lazy"/></a>
         <div class="info">
             <p class="info-item">
             <b>Likes: </b>${hit.likes}
@@ -2080,7 +2080,7 @@ function markup(hits) {
             <p class="info-item">
             <b>Downloads: </b> ${hit.downloads}
             </p>
-        </div></li>`;
+        </div></div>`;
   }).join("");
   ref.gallery.innerHTML = markup;
 }
