@@ -57,12 +57,12 @@ function render({ total, hits }) {
     ref.loadMore.hidden = false;
     if ( page === 1 ) {Notiflix.Notify.info(`Hooray! We found ${total}totalHits images.`)}
     markup(hits);
-    const simplelightbox = new SimpleLightbox(".gallery .photo-card"); // photo-card - класс на ссылке
+    const simplelightbox = new SimpleLightbox(".photo-card"); // photo-card - класс на ссылке
     simplelightbox.on("show.simplelightbox");
 }
 function markup (hits) {
     const markup = hits.map(hit => {
-        return `<div class="photo-card"><a href=${hit.largeImageURL}><img src=${hit.webformatURL} width="320" alt=${hit.tags} loading="lazy"/></a>
+        return `<a href=${hit.largeImageURL} class="photo-card"><div><img src=${hit.webformatURL} width="320" alt=${hit.tags} loading="lazy"/>
         <div class="info">
             <p class="info-item">
             <b>Likes: </b>${hit.likes}
@@ -76,7 +76,7 @@ function markup (hits) {
             <p class="info-item">
             <b>Downloads: </b> ${hit.downloads}
             </p>
-        </div></div>`
+        </div></div></a>`
     }).join("");
     ref.gallery.innerHTML = markup;
 }

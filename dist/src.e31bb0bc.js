@@ -2059,14 +2059,14 @@ function render({
   }
 
   markup(hits);
-  const simplelightbox = new _simplelightbox.default(".gallery .photo-card"); // photo-card - класс на ссылке
+  const simplelightbox = new _simplelightbox.default(".photo-card"); // photo-card - класс на ссылке
 
   simplelightbox.on("show.simplelightbox");
 }
 
 function markup(hits) {
   const markup = hits.map(hit => {
-    return `<div class="photo-card"><a href=${hit.largeImageURL}><img src=${hit.webformatURL} width="320" alt=${hit.tags} loading="lazy"/></a>
+    return `<a href=${hit.largeImageURL} class="photo-card"><div><img src=${hit.webformatURL} width="320" alt=${hit.tags} loading="lazy"/>
         <div class="info">
             <p class="info-item">
             <b>Likes: </b>${hit.likes}
@@ -2080,7 +2080,7 @@ function markup(hits) {
             <p class="info-item">
             <b>Downloads: </b> ${hit.downloads}
             </p>
-        </div></div>`;
+        </div></div></a>`;
   }).join("");
   ref.gallery.innerHTML = markup;
 }
@@ -2119,7 +2119,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64074" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50467" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
