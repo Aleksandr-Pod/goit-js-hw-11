@@ -2059,14 +2059,14 @@ function render({
   }
 
   markup(hits);
-  const simplelightbox = new _simplelightbox.default(".photo-card"); // photo-card - класс на ссылке
+  const simplelightbox = new _simplelightbox.default(".gallery .photo-card"); // photo-card - класс на ссылке
 
   simplelightbox.on("show.simplelightbox");
 }
 
 function markup(hits) {
   const markup = hits.map(hit => {
-    return `<li><a href="${hit.imageURL} class="photo-card"><img src=${hit.webformatURL} width="320" alt=${hit.tags} loading="lazy"/></a>
+    return `<li><a href=${hit.largeImageURL} class="photo-card"><img src=${hit.webformatURL} width="320" alt=${hit.tags} loading="lazy"/></a>
         <div class="info">
             <p class="info-item">
             <b>Likes: </b>${hit.likes}
