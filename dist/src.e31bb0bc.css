@@ -48,6 +48,7 @@ button {
   flex-direction: column;
   justify-content: space-between;
   width: 330px;
+  height: 100%;
   margin: 5px;
   border: solid 1px #303500;
   border-radius: 5px;
