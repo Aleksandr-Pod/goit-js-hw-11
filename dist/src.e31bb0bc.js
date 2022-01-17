@@ -224,6 +224,8 @@ const ref = {
 ref.loadMore.hidden = true;
 ref.inputForm.addEventListener('submit', onSubmit);
 ref.loadMore.addEventListener('click', onLoadMore);
+let page = 1;
+const perPage = 20;
 
 function onSubmit(evt) {
   evt.preventDefault();
@@ -244,7 +246,7 @@ function onSubmit(evt) {
 }
 
 function fetchPics(searchName) {
-  return fetch(`${ref.URL}?key=${ref.key}&q=${searchName}&image_type=photo&orientation=horizontal&safesearch=true`).then(resp => resp.json());
+  return fetch(`${ref.URL}?key=${ref.key}&q=${searchName}&page=${page}&per-page=${perPage}&image_type=photo&orientation=horizontal&safesearch=true`).then(resp => resp.json());
 }
 
 function render({

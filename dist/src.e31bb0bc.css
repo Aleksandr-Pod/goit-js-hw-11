@@ -10,7 +10,11 @@ body {
 .search-form {
   display: flex;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
   padding: 20px;
+  width: 100%;
   background-color: #454461;
 }
 
@@ -20,6 +24,7 @@ input {
 }
 
 button {
+  margin-left: 10px;
   font-size: 16px;
   background-color: #8c8cce;
 }
@@ -28,13 +33,13 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 80px;
 }
 
 li {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   width: 330px;
   margin: 5px;
   border: solid 1px #303500;
@@ -56,7 +61,7 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 5px 2px;
+  margin: 5px 5px;
   padding: 5px 5px;
   border: solid 1px #303500;
   border-radius: 5px;
