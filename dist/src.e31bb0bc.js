@@ -218,18 +218,21 @@ const ref = {
   inputField: document.querySelector("input"),
   gallery: document.querySelector(".gallery"),
   loadMore: document.querySelector(".load-more"),
+  pageField: document.querySelector(".page-field"),
   URL: "https://pixabay.com/api/",
   key: "25089539-92235f01f3468a6ac8c56a646"
 };
 ref.loadMore.hidden = true;
+ref.pageField.hidden = true;
+let page = 1;
+const perPage = 10;
+let searchName = "";
 ref.inputForm.addEventListener('submit', onSubmit);
 ref.loadMore.addEventListener('click', onLoadMore);
-let page = 1;
-const perPage = 20;
 
 function onSubmit(evt) {
   evt.preventDefault();
-  const searchName = evt.currentTarget.elements.searchQuery.value.trim();
+  searchName = evt.currentTarget.elements.searchQuery.value.trim();
 
   if (!searchName) {
     _notiflix.default.Notify.info("Nothing to search");
@@ -237,19 +240,20 @@ function onSubmit(evt) {
     return;
   }
 
-  fetchPics(searchName).then(data => {
-    render(data);
-    ref.loadMore.hidden = false;
-  }).catch(error => {
-    Nitiflix.Notify.info("server query error");
+  page = 1;
+  fetchPics(searchName).then(data => render(data)).catch(error => {
+    _notiflix.default.Notify.info("server query error");
   });
 }
 
 function fetchPics(searchName) {
-  return fetch(`${ref.URL}?key=${ref.key}&q=${searchName}&page=${page}&per-page=${perPage}&image_type=photo&orientation=horizontal&safesearch=true`).then(resp => resp.json());
+  ref.loadMore.hidden = true;
+  ref.pageField.hidden = true;
+  return fetch(`${ref.URL}?key=${ref.key}&q=${searchName}&page=${page}&per_page=${perPage}&image_type=photo&orientation=horizontal&safesearch=true`).then(resp => resp.json());
 }
 
 function render({
+  total,
   hits
 }) {
   if (!hits.length) {
@@ -257,6 +261,14 @@ function render({
     _notiflix.default.Notify.info("Sorry, there are no images matching your search query. Please try again.");
 
     return;
+  }
+
+  ref.pageField.hidden = false;
+  ref.pageField.textContent = `Page:${page}`;
+  ref.loadMore.hidden = false;
+
+  if (page === 1) {
+    _notiflix.default.Notify.info(`Hooray! We found ${total}totalHits images.`);
   }
 
   const markup = hits.map(hit => {
@@ -279,7 +291,12 @@ function render({
   ref.gallery.innerHTML = markup;
 }
 
-function onLoadMore() {}
+function onLoadMore() {
+  page += 1;
+  fetchPics(searchName).then(data => render(data)).catch(error => {
+    _notiflix.default.Notify.info("server query error");
+  });
+}
 },{"./sass/main.scss":"sass/main.scss","notiflix":"../node_modules/notiflix/dist/notiflix-aio-3.2.2.min.js","notiflix/dist/notiflix-3.2.2.min.css":"../node_modules/notiflix/dist/notiflix-3.2.2.min.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

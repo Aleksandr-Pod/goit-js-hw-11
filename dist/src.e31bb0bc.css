@@ -24,7 +24,6 @@ input {
 }
 
 button {
-  margin-left: 10px;
   font-size: 16px;
   background-color: #8c8cce;
 }
@@ -34,6 +33,14 @@ button {
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 80px;
+}
+
+.page-field {
+  margin: 0 10px;
+  padding: 5px;
+  font-size: 16px;
+  background-color: darkgoldenrod;
+  border: solid 1px black;
 }
 
 li {
