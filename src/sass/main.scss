@@ -24,30 +24,37 @@ button {
   font-size: 16px;
   background-color: rgb(140, 140, 206);
 }
-li {
+.gallery {
   display: flex;
-  flex-direction: raw;
   flex-wrap: wrap;
   justify-content: center;
-  width: 650px;
-  margin: 0 auto;
+  margin-top: 10px;
+}
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 330px;
+  margin: 5px;
   border: solid 1px rgb(48, 53, 0);
   background-color: rgb(243, 255, 133);
 }
 img {
-  margin: 5px;
+  margin: 5px auto;
 }
 .info {
   display: flex;
+  justify-content: center;
   // width: 640px;
   background-color: rgb(243, 255, 133);
 }
 .info-item {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin: 5px 10px;
-  padding: 5px 15px;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 2px;
+  padding: 5px 5px;
   border: solid 1px rgb(48, 53, 0);
   border-radius: 5px;
   background-color: sandybrown;
