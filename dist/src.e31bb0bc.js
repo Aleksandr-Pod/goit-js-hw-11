@@ -217,10 +217,13 @@ const ref = {
   inputForm: document.querySelector(".search-form"),
   inputField: document.querySelector("input"),
   gallery: document.querySelector(".gallery"),
+  loadMore: document.querySelector(".load-more"),
   URL: "https://pixabay.com/api/",
   key: "25089539-92235f01f3468a6ac8c56a646"
 };
+ref.loadMore.hidden = true;
 ref.inputForm.addEventListener('submit', onSubmit);
+ref.loadMore.addEventListener('click', onLoadMore);
 
 function onSubmit(evt) {
   evt.preventDefault();
@@ -232,7 +235,10 @@ function onSubmit(evt) {
     return;
   }
 
-  fetchPics(searchName).then(data => render(data)).catch(error => {
+  fetchPics(searchName).then(data => {
+    render(data);
+    ref.loadMore.hidden = false;
+  }).catch(error => {
     Nitiflix.Notify.info("server query error");
   });
 }
@@ -270,6 +276,8 @@ function render({
   }).join("");
   ref.gallery.innerHTML = markup;
 }
+
+function onLoadMore() {}
 },{"./sass/main.scss":"sass/main.scss","notiflix":"../node_modules/notiflix/dist/notiflix-aio-3.2.2.min.js","notiflix/dist/notiflix-3.2.2.min.css":"../node_modules/notiflix/dist/notiflix-3.2.2.min.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
