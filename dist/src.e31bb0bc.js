@@ -227,12 +227,14 @@ function onSubmit(evt) {
   const searchName = evt.currentTarget.elements.searchQuery.value.trim();
 
   if (!searchName) {
-    _notiflix.default.Notify.info("Нечего искать");
+    _notiflix.default.Notify.info("Nothing to search");
 
     return;
   }
 
-  fetchPics(searchName).then(data => render(data));
+  fetchPics(searchName).then(data => render(data)).catch(error => {
+    Nitiflix.Notify.info("server query error");
+  });
 }
 
 function fetchPics(searchName) {
@@ -244,13 +246,27 @@ function render({
 }) {
   if (!hits.length) {
     // Если картинок нет
-    _notiflix.default.Notify.info("Нет таких картинок");
+    _notiflix.default.Notify.info("Sorry, there are no images matching your search query. Please try again.");
 
     return;
   }
 
   const markup = hits.map(hit => {
-    return `<li><image src=${hit.webformatURL}/></li>`;
+    return `<li><img src=${hit.webformatURL} width="640" alt=${hit.tags} loading="lazy"/>
+        <div class="info">
+            <p class="info-item">
+            <b>Likes: </b>${hit.likes}
+            </p>
+            <p class="info-item">
+            <b>Views: </b>${hit.views}
+            </p>
+            <p class="info-item">
+            <b>Comments: </b> ${hit.comments}
+            </p>
+            <p class="info-item">
+            <b>Downloads: </b> ${hit.downloads}
+            </p>
+        </div></li>`;
   }).join("");
   ref.gallery.innerHTML = markup;
 }

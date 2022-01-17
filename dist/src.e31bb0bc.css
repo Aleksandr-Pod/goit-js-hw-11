@@ -24,8 +24,36 @@ button {
   background-color: #8c8cce;
 }
 
-image {
+li {
+  display: flex;
+  flex-direction: raw;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 650px;
   margin: 0 auto;
+  border: solid 1px #303500;
+  background-color: #f3ff85;
+}
+
+img {
+  margin: 5px;
+}
+
+.info {
+  display: flex;
+  background-color: #f3ff85;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 5px 10px;
+  padding: 5px 15px;
+  border: solid 1px #303500;
+  border-radius: 5px;
+  background-color: sandybrown;
+  color: #0e0e0e;
 }
 /* Notiflix (https://notiflix.github.io) - Version: 3.2.2 - Author: Furkan MT (https://github.com/furcan) - Copyright 2019 - 2021 Notiflix, MIT Licence (https://opensource.org/licenses/MIT) */
 
