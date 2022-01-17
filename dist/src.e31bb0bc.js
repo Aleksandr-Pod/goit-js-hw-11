@@ -2066,7 +2066,7 @@ function render({
 
 function markup(hits) {
   const markup = hits.map(hit => {
-    return `<li><a href="${hit.imageURL} class"photo-card"><img src=${hit.webformatURL} width="320" alt=${hit.tags} loading="lazy"/></a>
+    return `<li><a href="${hit.imageURL} class="photo-card"><img src=${hit.webformatURL} width="320" alt=${hit.tags} loading="lazy"/></a>
         <div class="info">
             <p class="info-item">
             <b>Likes: </b>${hit.likes}
@@ -2119,7 +2119,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54516" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64074" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

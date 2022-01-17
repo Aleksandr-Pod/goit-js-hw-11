@@ -62,7 +62,7 @@ function render({ total, hits }) {
 }
 function markup (hits) {
     const markup = hits.map(hit => {
-        return `<li><a href="${hit.imageURL} class"photo-card"><img src=${hit.webformatURL} width="320" alt=${hit.tags} loading="lazy"/></a>
+        return `<li><a href="${hit.imageURL} class="photo-card"><img src=${hit.webformatURL} width="320" alt=${hit.tags} loading="lazy"/></a>
         <div class="info">
             <p class="info-item">
             <b>Likes: </b>${hit.likes}
