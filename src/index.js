@@ -24,7 +24,7 @@ const key = "25089539-92235f01f3468a6ac8c56a646";
 ref.loadMore.hidden = true;
 ref.pageField.hidden = true;
 let page = 1;
-const perPage = 10;
+const perPage = 30;
 let searchName = "";
 
 ref.inputForm.addEventListener('submit', onSubmit);
@@ -45,11 +45,11 @@ function onSubmit(evt) {
         });
 }
 
-function fetchPics(searchName) {
+async function fetchPics(searchName) {
     ref.loadMore.hidden = true;
     ref.pageField.hidden = true;
-    return axios.get(`${URL}?key=${key}&q=${searchName}&page=${page}&per_page=${perPage}&image_type=photo&orientation=horizontal&safesearch=true`)
-        .then(resp => resp.data)
+    const resp = await axios.get(`${URL}?key=${key}&q=${searchName}&page=${page}&per_page=${perPage}&image_type=photo&orientation=horizontal&safesearch=true`);
+    return resp.data;
 }
 
 function render({ total, hits }) {
