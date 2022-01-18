@@ -1,10 +1,15 @@
 import './sass/main.scss';
+
 import Notiflix from "notiflix";
 // Дополнительный импорт стилей
 import 'notiflix/dist/notiflix-3.2.2.min.css';
+
+import axios from "axios";
+
 import SimpleLightbox from 'simplelightbox';
 // Дополнительный импорт стилей
 import 'simplelightbox/dist/simple-lightbox.min.css';
+
 
 const ref = {
     inputForm: document.querySelector(".search-form"),
@@ -43,8 +48,8 @@ function onSubmit(evt) {
 function fetchPics(searchName) {
     ref.loadMore.hidden = true;
     ref.pageField.hidden = true;
-    return fetch(`${URL}?key=${key}&q=${searchName}&page=${page}&per_page=${perPage}&image_type=photo&orientation=horizontal&safesearch=true`)
-        .then(resp => resp.json())
+    return axios.get(`${URL}?key=${key}&q=${searchName}&page=${page}&per_page=${perPage}&image_type=photo&orientation=horizontal&safesearch=true`)
+        .then(resp => resp.data)
 }
 
 function render({ total, hits }) {
@@ -55,14 +60,14 @@ function render({ total, hits }) {
     ref.pageField.hidden = false;
     ref.pageField.textContent = `Page:${page}`
     ref.loadMore.hidden = false;
-    if ( page === 1 ) {Notiflix.Notify.info(`Hooray! We found ${total}totalHits images.`)}
+    if ( page === 1 ) {Notiflix.Notify.info(`Hooray! We found ${total} images.`)}
     markup(hits);
     const simplelightbox = new SimpleLightbox(".photo-card"); // photo-card - класс на ссылке
     simplelightbox.on("show.simplelightbox");
 }
 function markup (hits) {
     const markup = hits.map(hit => {
-        return `<a href=${hit.largeImageURL} class="photo-card"><div><img src=${hit.webformatURL} width="320" alt=${hit.tags} loading="lazy"/>
+        return `<a href=${hit.largeImageURL} class="photo-card"><img src=${hit.webformatURL} alt=${hit.tags} loading="lazy"/>
         <div class="info">
             <p class="info-item">
             <b>Likes: </b>${hit.likes}
@@ -76,7 +81,7 @@ function markup (hits) {
             <p class="info-item">
             <b>Downloads: </b> ${hit.downloads}
             </p>
-        </div></div></a>`
+        </div></a>`
     }).join("");
     ref.gallery.innerHTML = markup;
 }
