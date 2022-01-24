@@ -60,14 +60,15 @@ function render({ total, hits }) {
     ref.pageField.hidden = false;
     ref.pageField.textContent = `Page:${page}`
     ref.loadMore.hidden = false;
-    if ( page === 1 ) {Notiflix.Notify.info(`Hooray! We found ${total} images.`)}
+    if (page === 1) Notiflix.Notify.info(`Hooray! We found ${total} images.`);
     markup(hits);
-    const simplelightbox = new SimpleLightbox(".photo-card"); // photo-card - класс на ссылке
-    simplelightbox.on("show.simplelightbox");
+    const modal = new SimpleLightbox(".gallery a"); // photo-card - класс на ссылке
+    modal.on("show.modal");
 }
 function markup (hits) {
     const markup = hits.map(hit => {
-        return `<a href=${hit.largeImageURL} class="photo-card"><img src=${hit.webformatURL} alt=${hit.tags} loading="lazy"/>
+        return `<a href=${hit.largeImageURL} class="photo-card">
+        <img src=${hit.webformatURL} alt=${hit.tags} loading="lazy" />
         <div class="info">
             <p class="info-item">
             <b>Likes: </b>${hit.likes}

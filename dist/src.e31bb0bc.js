@@ -4161,20 +4161,17 @@ function render({
   ref.pageField.hidden = false;
   ref.pageField.textContent = `Page:${page}`;
   ref.loadMore.hidden = false;
-
-  if (page === 1) {
-    _notiflix.default.Notify.info(`Hooray! We found ${total} images.`);
-  }
-
+  if (page === 1) _notiflix.default.Notify.info(`Hooray! We found ${total} images.`);
   markup(hits);
-  const simplelightbox = new _simplelightbox.default(".photo-card"); // photo-card - класс на ссылке
+  const modal = new _simplelightbox.default(".gallery a"); // photo-card - класс на ссылке
 
-  simplelightbox.on("show.simplelightbox");
+  modal.on("show.modal");
 }
 
 function markup(hits) {
   const markup = hits.map(hit => {
-    return `<a href=${hit.largeImageURL} class="photo-card"><img src=${hit.webformatURL} alt=${hit.tags} loading="lazy"/>
+    return `<a href=${hit.largeImageURL} class="photo-card">
+        <img src=${hit.webformatURL} alt=${hit.tags} loading="lazy" />
         <div class="info">
             <p class="info-item">
             <b>Likes: </b>${hit.likes}
@@ -4227,7 +4224,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50467" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51410" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
